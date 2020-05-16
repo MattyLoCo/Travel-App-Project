@@ -1,4 +1,3 @@
-import { listener } from  './js/listener.js';
 import { getWeatherData } from './js/getweatherdata.js';
 import { postWeatherData } from './js/postweatherdata.js';
 import { getNewData } from './js/getnewdata.js';
@@ -11,7 +10,10 @@ export {
     getWeatherData, 
     postWeatherData, 
     getNewData, 
-    uiUpdate, 
-    listener, 
+    uiUpdate,
     performAction 
 };
+
+// Add event listener
+const button = document.getElementById("generate");
+button.onclick = performAction;

@@ -1,15 +1,19 @@
-/* Global Variables */
-const ApiKey = "91b0b55d837ff53bcd4a0c367014bd60";
-const baseURL = "https://api.openweathermap.org/data/2.5/weather?zip=";
-
-/* Helper Functions */
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+'/'+ d.getDate()+'/'+ d.getFullYear();
+import { getWeatherData } from './getweatherdata.js';
+import { postWeatherData } from './postweatherdata.js';
+import { getNewData } from './getnewdata.js';
+import { uiUpdate} from './uiupdate.js';
 
 // Kick off app functions using promises
 export function performAction(e) {
   let zip = document.getElementById("zip").value;
+  /* Global Variables */
+  const ApiKey = "91b0b55d837ff53bcd4a0c367014bd60";
+  const baseURL = "https://api.openweathermap.org/data/2.5/weather?zip=";
+
+  /* Helper Functions */
+  // Create a new date instance dynamically with JS
+  let d = new Date();
+  let newDate = d.getMonth()+'/'+ d.getDate()+'/'+ d.getFullYear();
 
   getWeatherData(`${baseURL}${zip}&units=imperial&appid=${ApiKey}`)
     .then(function getTemp(newData) {
