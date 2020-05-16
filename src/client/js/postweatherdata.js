@@ -1,5 +1,5 @@
 //  Function to post weather
-const postWeatherData = async (url = "", data = {}) => {
+async function postWeatherData(url = "", data = {}) {
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -13,6 +13,6 @@ const postWeatherData = async (url = "", data = {}) => {
     } catch (error) {
       console.error("Post Error:", error);
     }
-  };
+}
 
 export { postWeatherData };  

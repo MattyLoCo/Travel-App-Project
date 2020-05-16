@@ -1,8 +1,3 @@
-import { getWeatherData } from './js/getWeatherData.js';
-import { postWeatherData } from './js/postWeatherData.js';
-import { getNewData } from './js/getNewData.js';
-import { uiUpdate} from './js/uiupdate.js';
-
 /* Global Variables */
 const ApiKey = "91b0b55d837ff53bcd4a0c367014bd60";
 const baseURL = "https://api.openweathermap.org/data/2.5/weather?zip=";

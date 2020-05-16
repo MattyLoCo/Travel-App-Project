@@ -5,6 +5,13 @@ import { getNewData } from './js/getnewdata.js';
 import { uiUpdate} from './js/uiupdate.js';
 import { performAction } from './js/app.js';
 
-import './style/style.scss';
+import './styles/style.scss';
 
-export { getWeatherData, postWeatherData, getNewData, uiUpdate, listener, performAction };
+export { 
+    getWeatherData, 
+    postWeatherData, 
+    getNewData, 
+    uiUpdate, 
+    listener, 
+    performAction 
+};

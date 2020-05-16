@@ -1,5 +1,5 @@
 //  Fetch the data from the app endpoint
-const getNewData = async (url = "") => {
+async function getNewData(url = "") {
     const response = await fetch(url);
     try {
       const projectData = await response.json();
@@ -8,6 +8,6 @@ const getNewData = async (url = "") => {
     } catch (error) {
       console.log("Retrieval Error:", error);
     }
-  };
+}
 
 export { getNewData };  
