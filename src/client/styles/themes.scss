@@ -1,0 +1,40 @@
+//  Color scheme generated using https://coolors.co/8aa67f-ffffed-4c1a1a-1b1a1c-62e9de
+$green: #8aa67fff;
+$white: #ffffedff;
+$red: #4c1a1aff;
+$black: #1b1a1cff;
+$blue: #62e9deff;
+
+// Found basic local font import function at 
+// https://stackoverflow.com/questions/40503039/scss-import-local-ttf-font
+@mixin font($font-family, $font-file) {
+    @font-face {
+      font-family: $font-family;
+      src: url($font-file+'.eot');
+      src: url($font-file+'.eot?#iefix') format('embedded-opentype'),
+           url($font-file+'.woff') format('woff'),
+           url($font-file+'.ttf') format('truetype'),
+           url($font-file+'.svg#aller') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+};
+
+@include font('Kollektif', './fonts/kollektif/Kollektif');
+@include font('Poppins-Bold', './fonts/Poppins/Poppins-Bold');
+@include font('Poppins-Bold-Italic', './fonts/Poppins/Poppins-BoldItalic');
+@include font('Poppins-Extra-Bold', './fonts/Poppins/Poppins-ExtraBold');
+
+h1 {
+    font-family: 'Poppins-Bold', 'Arial-Bold', arial, sans-serif;
+    color: $black;
+};
+
+h2 {
+    font-family: 'Poppins-Bold-Italic', 'Arial-Bold', arial, sans-serif;    
+    color: $black;
+};
+
+body {
+    color: $black;
+}
