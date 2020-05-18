@@ -1,126 +1,296 @@
 @import "./themes.scss";
-
-body{
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;    
-}
+@import "./header.scss";
+@import "./base.scss";
+@import "./footer.scss";
 
 .clearfix {
-    overflow: auto;
+  overflow: auto;
 }
 
-#app{
+//  Handheld devices
+@media screen and (max-width: 600px) {
+  body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-}
+  }
+  .headline {
+    height: 20vh;
+    align-items: flex-start;
+    justify-content: center;        
 
-.holder{
+    h1 {
+      font-size: 35px;
+      color: $red;
+      margin: 0px;
+    }
+  }
 
-}
+  #app {
+    height: 80vh;
+  }
 
-.entry{
-    background: rgba(59, 74, 107, .4);
-}
+  .holder {
+  }
 
-#entryHolder{
+  .entry {
+    background: $green;
+  }
+
+  #entryHolder {
     height: 200px;
     width: 90vw;
-}
+  }
 
-#date{
+  #date {
+  }
 
-}
+  #temp {
+  }
 
-#temp{
+  #content {
+  }
 
-}
+  .title {
+  }
 
-#content{
-
-}
-
-.headline {
-    font-size: 30px;
-}
-
-.title{
-
-}
-
-.myInput {
+  .myInput {
     height: 150px;
+  }
+
+  /*  Basic Styling To Override Default For Basic HTML Elements */
+  label {
+    display: block;
+    text-align: center;
+    width: 100vw;
+    font-size: 15px;
+    opacity: 0.8;
+  }
+
+  input, 
+  textarea {
+    display: block;
+    height: 60px;
+    width: 100%;
+    background: $green;
+    color: $black;
+    font-size: 15px;
+    border: none;
+  }
+
+  button {
+    width: 200px;
+    height: 100px;
+    margin: 15px;
+    background: #3b4a6b;
+    color: #f0d43a;
+    font-size: 15px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 2px 4px 5px #444;
+  }
+
+  /* Reset style for HTML element on active to have no border*/
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:hover {
+    box-shadow: 10px;
+    border: none;
+  }
+  /* Style for Placeholder Text*/
+  ::placeholder {
+    /* Firefox, Chrome, Opera */
+    color: $blue;
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $blue;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $blue;
+  }
 }
 
-/*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
+// Tablet devices
+@media (min-width: 601px) and (max-width: 900px) {
+  .holder {
+  }
+
+  .entry {
+    background: rgba(59, 74, 107, 0.4);
+  }
+
+  #entryHolder {
+    height: 200px;
+    width: 90vw;
+  }
+
+  #date {
+  }
+
+  #temp {
+  }
+
+  #content {
+  }
+
+  .title {
+  }
+
+  .myInput {
+    height: 150px;
+  }
+
+  /*  Basic Styling To Override Default For Basic HTML Elements */
+  label {
+    display: block;
     font-size: 27px;
     opacity: 0.9;
-}
+  }
 
-input{
-    display:block;
+  input {
+    display: block;
     height: 60px;
     width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
+    background: $green;
+    color: $blue;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
     border: none;
-}
+  }
 
-button{
+  button {
     width: 200px;
     height: 50px;
     margin: 15px;
     background: #3b4a6b;
     color: #f0d43a;
     font-size: 26px;
-    font-family: 'Oswald', sans-serif;
     border: none;
     border-radius: 25px;
     box-shadow: 2px 4px 5px #444;
-}
-h1{
-    font-size: 36px;
-}
+  }
 
-textarea{
-    background:#22b2da;
+  textarea {
+    background: #22b2da;
     color: #f0d43a;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-}
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:hover {
+  }
+  /* Reset style for HTML element on active to have no border*/
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:hover {
     box-shadow: 10px;
     border: none;
+  }
+  /* Style for Placeholder Text*/
+  ::placeholder {
+    /* Firefox, Chrome, Opera */
+    color: #f0d43a;
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #f0d43a;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #f0d43a;
+  }
 }
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
 
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+//  Desktop devices
+@media (min-width: 901px) {
+  .holder {
+  }
 
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+  .entry {
+    background: rgba(59, 74, 107, 0.4);
+  }
 
-} 
+  #entryHolder {
+    height: 200px;
+    width: 90vw;
+  }
+
+  #date {
+  }
+
+  #temp {
+  }
+
+  #content {
+  }
+
+  .title {
+  }
+
+  .myInput {
+    height: 150px;
+  }
+
+  /*  Basic Styling To Override Default For Basic HTML Elements */
+  label {
+    display: block;
+    font-size: 27px;
+    opacity: 0.9;
+  }
+
+  input {
+    display: block;
+    height: 60px;
+    width: 320px;
+    background: #22b2da;
+    color: #f0d43a;
+    font-size: 20px;
+    border: none;
+  }
+
+  button {
+    width: 200px;
+    height: 50px;
+    margin: 15px;
+    background: #3b4a6b;
+    color: #f0d43a;
+    font-size: 26px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 2px 4px 5px #444;
+  }
+  h1 {
+    font-size: 36px;
+  }
+
+  textarea {
+    background: #22b2da;
+    color: #f0d43a;
+    font-size: 20px;
+  }
+  /* Reset style for HTML element on active to have no border*/
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:hover {
+    box-shadow: 10px;
+    border: none;
+  }
+  /* Style for Placeholder Text*/
+  ::placeholder {
+    /* Firefox, Chrome, Opera */
+    color: #f0d43a;
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #f0d43a;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #f0d43a;
+  }
+}
