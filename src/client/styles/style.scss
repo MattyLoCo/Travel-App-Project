@@ -37,8 +37,8 @@
   }
 
   #entryHolder {
-    height: 200px;
-    width: 90vw;
+    height: 150px;
+    width: 100vw;
   }
 
   #date {
@@ -51,6 +51,7 @@
   }
 
   .title {
+      
   }
 
   .myInput {
@@ -58,7 +59,8 @@
   }
 
   /*  Basic Styling To Override Default For Basic HTML Elements */
-  label {
+  label,
+  .title {
     display: block;
     text-align: center;
     width: 100vw;
@@ -82,7 +84,7 @@
     height: 100px;
     margin: 15px;
     background: #3b4a6b;
-    color: #f0d43a;
+    color: $yellow;
     font-size: 15px;
     border: none;
     border-radius: 25px;
@@ -100,17 +102,17 @@
   /* Style for Placeholder Text*/
   ::placeholder {
     /* Firefox, Chrome, Opera */
-    color: $blue;
+    color: $yellow;
   }
 
   :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: $blue;
+    color: $yellow;
   }
 
   ::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: $blue;
+    color: $yellow;
   }
 }
 
@@ -125,7 +127,7 @@
 
   #entryHolder {
     height: 200px;
-    width: 90vw;
+    width: 100vw;
   }
 
   #date {

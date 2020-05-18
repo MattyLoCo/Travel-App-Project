@@ -5,7 +5,7 @@ import { uiUpdate} from './uiupdate.js';
 
 // Kick off app functions using promises
 export function performAction(e) {
-  let zip = document.getElementById("zip").value;
+  let zip = document.getElementById("city").value;
   /* Global Variables */
   const ApiKey = "91b0b55d837ff53bcd4a0c367014bd60";
   const baseURL = "https://api.openweathermap.org/data/2.5/weather?zip=";

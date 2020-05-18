@@ -1,6 +1,10 @@
 //  Setup empty JS object to act as endpoint for all routes
 projectData = [];
 
+//  Create private folder for private credentials
+const dotenv = require("dotenv");
+dotenv.config();
+
 //  Require Express to run server and routes
 const express = require('express');
 //  Start up an instance of app
@@ -24,6 +28,11 @@ const server = app.listen(port, () => {
 });
 
 //  GET route
+
+// Search by Location Name (use your username instead of demo):
+// "http://api.geonames.org/searchJSON?name=" +location+"&maxRows=1&username=" +demo
+// process.env.USER_NAME = username
+
 app.get('/all', sendData );
 
 //  Callback function to complete GET '/all'
