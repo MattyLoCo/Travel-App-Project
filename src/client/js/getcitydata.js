@@ -1,5 +1,5 @@
 //  Function to retrieve API weather data
-async function getWeatherData(url) {
+export async function getCityData(url) {
     const response = await fetch(url);
     try {
       let newData = await response.json();
@@ -9,5 +9,3 @@ async function getWeatherData(url) {
       console.log("Retrieval Error:", error);
     }
 }
-
-export { getWeatherData };
