@@ -5,12 +5,7 @@ import { uiUpdate} from './uiupdate.js';
 
 // Kick off app functions using promises
 export function performAction(e) {
-  let city = document.getElementById("city").value;
-  /* Global Variables */
-  const username = "mattyloco";
-  const baseURL = "http://api.geonames.org/searchJSON?name=";
-
-  getCityData(`${baseURL}${city}&maxRows=1&type=json&username=${username}`)
+  getCityData()
     // .then(function createEntry(temperature) {
     //   let feelings = document.getElementById("feelings").value;
     //   //  Debug test
