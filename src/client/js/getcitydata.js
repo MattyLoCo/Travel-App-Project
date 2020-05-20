@@ -10,6 +10,7 @@ export async function getCityData() {
     const response = await fetch(url);
     try {
       let data = await response.json();      
+      console.log(`${typeof data} ${JSON.stringify(data)}`);
       let newData = cityDataExtractor(data);
       console.log(`Successful Retrieval: ${JSON.stringify(newData)}`);
       return newData;
