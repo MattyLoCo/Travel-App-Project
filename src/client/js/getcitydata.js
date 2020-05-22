@@ -1,4 +1,5 @@
 import { cityDataExtractor } from './citydataextractor';
+import { localServerPost } from './localserverpost';
 
 //  Function to retrieve API weather data
 export async function getCityData() {
@@ -10,10 +11,12 @@ export async function getCityData() {
     const response = await fetch(url);
     try {
       let data = await response.json();      
-      console.log(`${typeof data} ${JSON.stringify(data)}`);
       let newData = cityDataExtractor(data);
-      console.log(`Successful Retrieval: ${JSON.stringify(newData)}`);
-      return newData;
+      console.log(`${city} coordinates: ${JSON.stringify(newData)}`);
+
+      localServerPost("http://localhost:3000/addcity", newData);
+
+      return newData;      
     } catch (error) {
       console.log("Retrieval Error:", error);
     }
