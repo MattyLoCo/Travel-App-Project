@@ -5,6 +5,7 @@ $red: #4c1a1aff;
 $black: #1b1a1cff;
 $blue: #62e9deff;
 $yellow: #f0d43a;
+$gray: #323133;
 
 // Found basic local font import function at 
 // https://stackoverflow.com/questions/40503039/scss-import-local-ttf-font
@@ -24,6 +25,12 @@ $yellow: #f0d43a;
 
 body{
     background: $white;
+
+    #app {
+        font-family: 'Kollektif', arial, sans-serif;
+        color: $black;
+        background: #ffffed80;
+    }
 }
 
 h1 {
@@ -36,8 +43,3 @@ h2 {
     color: $black;
 };
 
-#app {
-    font-family: 'Kollektif', arial, sans-serif;
-    color: $black;
-    background: $white;
-}

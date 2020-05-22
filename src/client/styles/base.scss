@@ -1,7 +1,13 @@
-#app {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
+body {
+    margin: 0px 0px;
+
+    #app {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        justify-items: stretch;
+        align-items: center;
+        align-content: stretch;
+        font-size: 20px;
+      }
 }
