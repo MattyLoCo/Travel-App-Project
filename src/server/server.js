@@ -40,26 +40,27 @@ function sendData(request, response, next) {
 
 //  POST 
 app.post('/addcity', (req, res) => {
-  // let string = JSON.stringify(req.body);
-  // let postCity = string.replace(/[^a-zA-Z0-9]/g, '');
-  // console.log(postCity);
-
   //  Debug code console test
   for (let [key, value] of Object.entries(req.body)) {
     console.log(`${key}: ${value}`);
   };
-  console.log(`${typeof req.body} has reached server post function`);
+  console.log(`${typeof req.body} has reached server 'addcity' post function`);
 
   let postCity = req.body.city;
   let long = req.body.longitude;
   let lat = req.body.latitude;
 
-  projectData = {
-    city: postCity,
-    longitude: long,
-    latitude: lat,
-    dates: ""
-  };
+  projectData.city = postCity;
+  projectData.longitude = long;
+  projectData.latitude = lat;
   
+  res.send(projectData);
+});
+
+app.post('/traveldate', (req, res) => {
+  console.log(`${typeof req.body} has reached server 'traveldate' post function`);
+
+  projectData.dates = req.body;
+
   res.send(projectData);
 });
