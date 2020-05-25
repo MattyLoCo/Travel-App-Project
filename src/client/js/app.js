@@ -1,8 +1,5 @@
 import { getCityData } from './getcitydata.js';
 import { dateCountdown } from './countdown';
-import { localServerPost } from './localserverpost.js';
-import { getNewData } from './getnewdata.js';
-import { uiUpdate} from './uiupdate.js';
 
 // Kick off app functions using promises
 export function performAction(e) {

@@ -16,7 +16,9 @@
     </div>
     <div class ="date">
       <label for="traveldate">Your Travel Dates</label>
-      <input type="text" class="myInput" id="traveldate" placeholder="MM/DD/YYYY">
+      <input type="text" class="myInput" id="traveldate"
+       pattern="^(20)\d\d([-])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$" 
+       title= "future date YYYY-MM-DD" placeholder="YYYY-MM-DD">
     </div>
     <button id="generate" type = "submit"> Bon Voyage </button>
     <div class ="entry">

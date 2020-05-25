@@ -15,7 +15,7 @@ body {
     display: block;    
     text-align: center;
     width: 100vw;
-    font-size: 18px;    
+    font-size: 18px;        
   }
 
   .title {
@@ -36,7 +36,8 @@ body {
     color: white;
     font-size: 15px;
     border: none;
-    border-radius: 15px;    
+    border-radius: 15px;   
+    opacity: 0.95; 
   }
 
   button {
@@ -51,6 +52,10 @@ body {
     border: none;
     border-radius: 25px;
     box-shadow: 2px 4px 5px #444;
+  }
+
+  .entry {
+    opacity: 0.98;
   }
 
   /* Reset style for HTML element on active to have no border*/
