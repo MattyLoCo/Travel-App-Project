@@ -64,3 +64,14 @@ app.post('/traveldate', (req, res) => {
 
   res.send(projectData);
 });
+
+app.post('/weatherpost', (req, res) => {
+  console.log(`${typeof req.body} has reached server 'weatherpost' post function`);
+
+  let weatherdata = req.body;
+  let current_temp = weatherdata.data[0].temp;
+  let description = weatherdata.data[0].weather.description;
+
+  projectData.temp = current_temp;
+  projectData.descrip = description;
+})

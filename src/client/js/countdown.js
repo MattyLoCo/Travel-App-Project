@@ -24,7 +24,10 @@ export function dateCountdown() {
             return dates;       
         }
     } else {
-        console.log("Date entered by user was not a valid form YYYY-MM-DD")
+        console.log("User did not enter a valid date in form YYYY-MM-DD")
+
+        let clearDates = "";
+        localServerPost('http://localhost:3000/traveldate', clearDates);
     }       
    
 }
