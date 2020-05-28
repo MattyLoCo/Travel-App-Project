@@ -14,7 +14,7 @@ export async function getCityData() {
       let newData = cityDataExtractor(data);
       console.log(`${city} coordinates: ${JSON.stringify(newData)}`);
 
-      localServerPost("http://localhost:3000/addcity", newData);
+      await localServerPost("http://localhost:3000/addcity", newData);
 
       return newData;      
     } catch (error) {

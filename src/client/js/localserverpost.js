@@ -1,7 +1,4 @@
 export async function localServerPost(url, data) {
-    for (let [key, value] of Object.entries(data)) {
-        console.log(`${key}: ${value}`);
-    }; 
     console.log(`Inside the localserverpost function ${url} is ${typeof url}`);
 
     let response = await fetch(url, {

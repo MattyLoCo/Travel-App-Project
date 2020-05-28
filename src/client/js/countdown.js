@@ -2,8 +2,8 @@
 import { localServerPost } from './localserverpost';
 import { validateDateForm } from './datevalidator';
 
-export function dateCountdown() {
-    let travelDate = document.getElementById('traveldate').value;    
+export async function dateCountdown() {
+    let travelDate = await document.getElementById('traveldate').value;    
     let countDownDate = new Date(travelDate).getTime();
     let now = new Date().getTime();
     let timeleft = countDownDate - now; 
@@ -18,7 +18,7 @@ export function dateCountdown() {
             let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));        
             let dates = [travelDate, days];
     
-            localServerPost('http://localhost:3000/traveldate', dates);
+            await localServerPost('http://localhost:3000/traveldate', dates);
             
             console.log(dates);
             return dates;       

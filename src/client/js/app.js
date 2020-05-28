@@ -2,12 +2,16 @@ import { getCityData } from './getcitydata.js';
 import { dateCountdown } from './countdown';
 import { weatherBitAPI } from './weatherbitapi';
 
-// Kick off app functions using promises
-export function performAction(e) {
+
+export async function performAction(e) {
   getCityData()
-  .then( dateCountdown() )
-  .then( weatherBitAPI() )
+  .then(() => {
+    return dateCountdown() 
+  })
+  .then(() => {
+    return weatherBitAPI() 
+  })
   .catch((error) => {
-    console.log("Total fail error", error);
+    console.log(error);
   });
 }

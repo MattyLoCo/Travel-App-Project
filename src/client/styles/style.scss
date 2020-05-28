@@ -3,6 +3,10 @@
 @import "./base.scss";
 @import "./footer.scss";
 
+* {
+  box-sizing: border-box;
+}
+
 .clearfix {
   overflow: auto;
 }
@@ -67,8 +71,9 @@
 
     &::after {
       content: "";
-      background: url(/images/backgroundimg2.jpg);
-      background-size: cover;
+      background: url(/images/tablet-background.jpeg);
+      background-size: 110% 95%;
+      background-repeat: no-repeat;
       top: 0;
       left: 0;
       bottom: 0;
@@ -85,16 +90,19 @@
 
       &[type="text" i] {
         padding: 1px 10px;
-    }
+      }
     }
 
     .headline {
+      background-color: unset;
+      background-image: linear-gradient(to right, $white, #ffffed00);   
       height: 6em;
-      align-items: flex-start;      
+      align-items: flex-start;           
+      
 
       h1 {
         font-size: 55px;
-        margin: 0px 0px 0px 20px;
+        margin: 0px 0px 0px 20px;        
       }
     }
 
@@ -102,7 +110,7 @@
       margin-bottom: 30px;
       background: $gray;
       border-radius: 25px;
-      width: 75vw;      
+      width: 75vw;
 
       .title {
         font-size: 20px;
@@ -115,10 +123,10 @@
       width: 100vw;
     }
 
-    label {      
-      height: 3em;      
+    label {
+      height: 3em;
       line-height: 4;
-      font-size: 22px;      
+      font-size: 22px;
     }
 
     button {
@@ -130,89 +138,118 @@
 
 //  Desktop devices
 @media (min-width: 901px) {
-  .entry {
-    background: rgba(59, 74, 107, 0.4);
-  }
+  body {
+    display: grid;
+    grid-template-rows: 150px 300px 400px 50px;
+    grid-template-columns: 30% 10% 30% 30%;    
+    grid-template-areas:
+      "hd hd hd hd"
+      "field field main main"
+      "ent ent ent ent"
+      "ft ft ft ft";
+    position: relative;
+    
+    &::after {
+      content: "";
+      background: url(/images/desktop-background.jpg);
+      background-size: 105% 105%;
+      background-repeat: no-repeat;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0.7;
+      position: absolute;
+      z-index: -1;
+    }
 
-  #entryHolder {
-    height: 200px;
-    width: 90vw;
-  }
+    .headline {
+      grid-area: hd;
+      background-color: unset;
+      background-image: linear-gradient(to right, $white, #ffffed00);
 
-  #date {
-  }
+      h1 {
+        font-size: 60px;
+      }
+    }
 
-  #temp {
-  }
+    .city,
+    .date {
+      grid-area: field;      
 
-  #content {
-  }
+      label {
+        display: block;
+        font-size: 30px;
+        opacity: 0.9;
+      }
+  
+      input {
+        display: block;  
+        width: 300px;      
+        font-size: 25px;
+        border: none;
 
-  .title {
-  }
+        &[type="text" i] {
+          padding: 1px 10px;
+        }  
+      }
 
-  .myInput {
-    height: 150px;
-  }
+    /*  Basic Styling To Override Default For Basic HTML Elements */
 
-  /*  Basic Styling To Override Default For Basic HTML Elements */
-  label {
-    display: block;
-    font-size: 27px;
-    opacity: 0.9;
-  }
+    button {
+      // width: 200px;
+      // height: 50px;
+      grid-area: "field";
+      margin: 15px;
+      background: #3b4a6b;
+      color: #f0d43a;
+      font-size: 26px;
+      border: none;
+      border-radius: 25px;
+      box-shadow: 2px 4px 5px #444;
+    }      
+  
+    /* Reset style for HTML element on active to have no border*/
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:hover {
+      box-shadow: 10px;
+      border: none;
+    }
+    /* Style for Placeholder Text*/
+    ::placeholder {
+      /* Firefox, Chrome, Opera */
+      color: #f0d43a;
+    }
 
-  input {
-    display: block;
-    height: 60px;
-    width: 320px;
-    background: #22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    border: none;
-  }
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #f0d43a;
+    }
 
-  button {
-    width: 200px;
-    height: 50px;
-    margin: 15px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    border: none;
-    border-radius: 25px;
-    box-shadow: 2px 4px 5px #444;
-  }
-  h1 {
-    font-size: 36px;
-  }
+    ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: #f0d43a;
+    }
 
-  textarea {
-    background: #22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-  }
-  /* Reset style for HTML element on active to have no border*/
-  input:focus,
-  select:focus,
-  textarea:focus,
-  button:hover {
-    box-shadow: 10px;
-    border: none;
-  }
-  /* Style for Placeholder Text*/
-  ::placeholder {
-    /* Firefox, Chrome, Opera */
-    color: #f0d43a;
-  }
+    .main {
+      grid-area: main;
+      border: 1px solid red;
+    }
 
-  :-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #f0d43a;
-  }
+    .entry {
+      grid-area: ent;
+      background: rgba(59, 74, 107, 0.4);
 
-  ::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: #f0d43a;
+      #entryHolder {
+        height: 200px;
+        width: 90vw;
+      }
+    }
+    
+    footer {
+      grid-area: ft;
+    }
   }
-}
+}}

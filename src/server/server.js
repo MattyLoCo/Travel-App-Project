@@ -7,7 +7,9 @@ projectData = {
   city: "",
   longitude: "",
   latitude: "",
-  dates: ""
+  dates: "",
+  temp: "",
+  descrip: ""
 };
 
 //  Require framework and middleware 
@@ -33,7 +35,8 @@ app.listen(port, () => {
 //  GET 
 app.get('/all', sendData );
 
-function sendData(request, response, next) {
+function sendData(request, response) {
+  console.log(`${projectData} being sent back to weatherfetch now...`);
   response.send(projectData);
 };
 
@@ -68,10 +71,10 @@ app.post('/traveldate', (req, res) => {
 app.post('/weatherpost', (req, res) => {
   console.log(`${typeof req.body} has reached server 'weatherpost' post function`);
 
-  let weatherdata = req.body;
-  let current_temp = weatherdata.data[0].temp;
-  let description = weatherdata.data[0].weather.description;
+  
 
   projectData.temp = current_temp;
   projectData.descrip = description;
-})
+
+  res.send(projectData);
+});
