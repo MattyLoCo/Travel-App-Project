@@ -71,7 +71,22 @@ app.post('/traveldate', (req, res) => {
 app.post('/weatherpost', (req, res) => {
   console.log(`${typeof req.body} has reached server 'weatherpost' post function`);
 
-  
+  let weather = req.body;
+  let current_temp = weather.data[0].temp;
+  let description  = weather.data[0].weather.description;
+
+  projectData.temp = current_temp;
+  projectData.descrip = description;
+
+  res.send(projectData);
+});
+
+app.post('/forecastpost', (req, res) => {
+  console.log(`${typeof req.body} has reached server 'forecastpost' post function`);
+
+  let weather = req.body;
+  let current_temp = weather.data[15].temp;
+  let description  = weather.data[15].weather.description;
 
   projectData.temp = current_temp;
   projectData.descrip = description;
