@@ -1,4 +1,4 @@
-// This was modified from 
+// This was modified from
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
 export function validateDateForm() {
@@ -6,12 +6,12 @@ export function validateDateForm() {
   let date = document.getElementById("traveldate").value;
 
   if (regex.test(date) === true) {
-      return true;
-  } else if (date = "") {
-      alert("Future date must be filled out");
-      return false;
+    return true;
+  } else if ((date = "")) {
+    alert("Future date must be filled out");
+    return false;
   } else {
-      alert("Please reenter your future date in the format YYYY-MM-DD");
-      return false;
+    alert("Please reenter your future date in the format YYYY-MM-DD");
+    return false;
   }
 }
