@@ -63,8 +63,15 @@ body {
   }
 
   .entry {
-    opacity: 0.98;
+    opacity: 0.98;    
   }
+
+  #entryholder {
+    color: $yellow;
+    font-size: 22px;
+  }
+
+
 
   /* Reset style for HTML element on active to have no border*/
   input:focus,

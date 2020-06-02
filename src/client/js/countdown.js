@@ -12,8 +12,7 @@ export async function dateCountdown() {
   if (validateDateForm() === true) {
     console.log(travelDate);
     if (days == 0) {
-      clearInterval(myfunc);
-      document.getElementById("date").innerHTML = "0";
+      clearInterval(myfunc);      
       document.getElementById("end").innerHTML = "Pack Your Bags!!";
       return true;
     } else if (0 < days && days < 7) {

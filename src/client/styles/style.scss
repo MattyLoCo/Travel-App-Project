@@ -213,18 +213,10 @@
       border-radius: 25px;
       box-shadow: 2px 4px 5px #444;
     }      
-
-    #citypic {      
-      background-image: url(/images/placeholder.jpeg);
-      background-size: cover;
-      background-repeat: no-repeat;
-      height: 20vh;
-      width: 20vw;
-    }
-
+    
     .entry {      
       grid-area: ent;    
-      display: flex;
+      display: block;
       align-items: center;
       justify-content: center;
       background: $gray;
@@ -235,6 +227,10 @@
       #entryHolder {
         height: 200px;
         width: unset;
+      }
+
+      .title {
+        font-size: 25px;
       }
     }
     
