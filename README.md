@@ -6,6 +6,8 @@ Travel App allows the user to get pertinent weather data and an image of their u
 ### Some Small Deets
 This project is highly modularized. Is that even a word? Regardless, it was for debugging purposes and will server you well if you're following the console error breadcrumb trail to fix any tweaks you might have made.
 
+Also, I left some commented-out debug tests in place at crucial chokepoints in the code for your troubleshooting.
+
 ## Instructions
 1. Clone this project from the master branch of the [project](https://github.com/MattyLoCo/Travel-App-Project)  
 2. Navigate to the root folder of your cloned project on your local disk, download, and install **[Node.js]**(https://nodejs.org/en/#download "Required for this project to work")

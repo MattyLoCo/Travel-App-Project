@@ -1,5 +1,8 @@
-//  Update UI with fetched data from projectData
-function uiUpdate(data) {
+import { getNewData } from './getnewdata';
+
+export async function uiUpdate() {
+  let response = await getNewData() 
+
   let newArray = JSON.parse(data);
   let date = newArray.date;
   let temp = newArray.temp;
@@ -13,5 +16,3 @@ function uiUpdate(data) {
   ).innerHTML = `The current temperature is ${temp}.`;
   document.getElementById("content").innerHTML = `You're feeling ${content}.`;
 }
-
-export { uiUpdate };

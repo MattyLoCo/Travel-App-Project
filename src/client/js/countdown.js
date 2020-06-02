@@ -3,9 +3,9 @@ import { validateDateForm } from "./datevalidator";
 
 export async function dateCountdown() {
   let travelDate = await document.getElementById("traveldate").value;
-  let countDownDate = new Date(travelDate).getTime(); //Milliseconds
-  let now = new Date().getTime(); //Milliseconds
-  let timeleft = countDownDate - now; //Milliseconds -> Days
+  let countDownDate = new Date(travelDate).getTime(); 
+  let now = new Date().getTime(); 
+  let timeleft = countDownDate - now; 
   let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
   let dates = [travelDate, days];
 
@@ -23,7 +23,6 @@ export async function dateCountdown() {
     } else {
       await localServerPost("http://localhost:3000/traveldate", dates);
 
-      console.log(dates);
       return false;
     }
   } else {

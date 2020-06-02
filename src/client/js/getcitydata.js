@@ -13,15 +13,13 @@ export async function getCityData() {
   try {
     let data = await response.json();
     let newData = cityDataExtractor(data);
-    //IF YOU WANT
-    console.log("newData", newData);
-    //
-    console.log(`${city} coordinates: ${JSON.stringify(newData)}`);
+    
+    console.log("newData", newData);        
 
     await localServerPost("http://localhost:3000/addcity", newData);
 
     return newData;
   } catch (error) {
-    console.log("Retrieval Error:", error);
+    console.log("Retrieval", error);
   }
 }

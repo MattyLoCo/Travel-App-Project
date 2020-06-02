@@ -2,6 +2,18 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
+//  Package to download image file to local project directory 'images'
+const fs = require('fs')
+const request = require('request')
+
+const download = (url, path, callback) => {
+  request.head(url, (err, res, body) => {
+    request(url)
+      .pipe(fs.createWriteStream(path))
+      .on('close', callback)
+  })
+}
+
 //  JS object to act as endpoint for routes
 projectData = {
   city: "",
@@ -86,8 +98,8 @@ app.post("/forecastpost", (req, res) => {
     `${typeof req.body} has reached server 'forecastpost' post function`
   );
 
-  projectData.temp = weather.data[15].temp;
-  projectData.descrip = weather.data[15].weather.description;
+  projectData.temp = req.body.data[15].temp;
+  projectData.descrip = req.body.data[15].weather.description;
 
   res.send(projectData);
 });
@@ -97,5 +109,12 @@ app.post("/imageurlpost", (req, res) => {
     `${typeof req.body} has reached server 'imageurlpost' post function`
   );
 
-  // projectData.imageurl = req.body.
+  projectData.imageurl = req.body;
+
+  let url = req.body.url;
+  let path = `./images/${req.body.qstring}.png`;
+
+  download(url, path, () => {
+    console.log('Image download complete');
+  })
 });

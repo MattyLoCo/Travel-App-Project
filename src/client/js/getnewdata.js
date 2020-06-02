@@ -1,6 +1,6 @@
 //  Fetch the data from the app endpoint
-export async function getNewData(url) {
-  let response = await fetch(url);
+export async function getNewData() {
+  let response = await fetch("http://localhost:3000/all");
   try {
     let projectData = await response.json();
 

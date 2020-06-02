@@ -1,6 +1,3 @@
-// This was modified from
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-
 export function validateDateForm() {
   const regex = /^(20)\d\d([-])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$/;
   let date = document.getElementById("traveldate").value;
