@@ -4,7 +4,7 @@ import { weatherFetch } from "./weatherfetch.js";
 import { dateCountdown } from "./countdown";
 
 export async function weatherBitAPI() {
-  let data = await getNewData("http://localhost:3000/all");
+  let data = await getNewData();
   try {
     let lat = data.latitude;
     let long = data.longitude;

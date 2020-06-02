@@ -61,13 +61,9 @@ app.post("/addcity", (req, res) => {
   }
   console.log(`${typeof req.body} has reached server 'addcity' post function`);
 
-  let postCity = req.body.city;
-  let long = req.body.longitude;
-  let lat = req.body.latitude;
-
-  projectData.city = postCity;
-  projectData.longitude = long;
-  projectData.latitude = lat;
+  projectData.city = req.body.city;
+  projectData.longitude = req.body.longitude;
+  projectData.latitude = req.body.latitude;
 
   res.send(projectData);
 });
