@@ -10,8 +10,7 @@ body {
     padding-bottom: 20px;
   }
 
-  #citypic {
-    background-image: url(/images/placeholder.jpeg);
+  #citypic {    
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -67,11 +66,9 @@ body {
   }
 
   #entryholder {
-    color: $yellow;
+    color: $white;
     font-size: 22px;
   }
-
-
 
   /* Reset style for HTML element on active to have no border*/
   input:focus,

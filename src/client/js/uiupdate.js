@@ -8,14 +8,14 @@ const weatherdiv = document.getElementById("temp");
 
 export async function uiUpdate() {
   let response = await getNewData();
-
+  
   try {
     let data = await response.json();
 
     // Set background image from local storage
     document.getElementById(
       "citypic"
-    ).style.backgroundImage = `url(/images/${data.city}).png`;
+    ).style.backgroundImage = `url('/images/${data.city}').png`;
 
     // Create date block
     let dateheader = document.createElement("p");

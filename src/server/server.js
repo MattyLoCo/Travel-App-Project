@@ -3,20 +3,23 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 //  Package to download image file to local project directory 'images'
-const fs = require('fs')
-const request = require('request')
+const fs = require("fs");
+const file = require("file-class");
+const request = require("request");
 
 const download = (url, path, callback) => {
   request.head(url, (err, res, body) => {
     request(url)
       .pipe(fs.createWriteStream(path))
-      .on('close', callback)
-  })
-}
+      .on("close", callback)
+  });
+};
 
 //  JS object to act as endpoint for routes
 projectData = {
   city: "",
+  country: "",
+  statecode: "",
   longitude: "",
   latitude: "",
   dates: "",
@@ -83,8 +86,15 @@ app.post("/weatherpost", (req, res) => {
     `${typeof req.body} has reached server 'weatherpost' post function`
   );
 
-  projectData.temp = weather.data[0].temp;
-  projectData.descrip = weather.data[0].weather.description;
+  if (req.body.country == "United States") {
+    projectData.statecode = req.body.statecode;
+  } else {
+    projectData.statecode = "";
+  }
+
+  projectData.country = country;
+  projectData.temp = req.body.temp;
+  projectData.descrip = req.body.descrip;
 
   res.send(projectData);
 });
@@ -93,9 +103,17 @@ app.post("/forecastpost", (req, res) => {
   console.log(
     `${typeof req.body} has reached server 'forecastpost' post function`
   );
+  
+  let country = req.body.country;
+  if (country == "United States") {
+    projectData.statecode = req.body.statecode;
+  } else {
+    projectData.statecode = "";
+  }
 
-  projectData.temp = req.body.data[15].temp;
-  projectData.descrip = req.body.data[15].weather.description;
+  projectData.country = country;
+  projectData.temp = req.body.temp;
+  projectData.descrip = req.body.descrip;
 
   res.send(projectData);
 });
@@ -110,7 +128,15 @@ app.post("/imageurlpost", (req, res) => {
   let url = req.body.url;
   let path = `./images/${req.body.qstring}.png`;
 
-  download(url, path, () => {
-    console.log('Image download complete');
-  })
+  // See if the file exists
+  // let myImage = new file(path);
+
+  // if (myImage.exists()) {
+  //   write("The file exists");
+  // } else {
+    // Download Pixabay city image to local images folder
+    download(url, path, () => {
+      console.log("Image download complete");
+    });
+  // }
 });

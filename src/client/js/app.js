@@ -1,7 +1,8 @@
 import { getCityData } from "./getcitydata.js";
-import { dateCountdown } from "./countdown";
+import { dateCountdown } from "./countdown.js";
 import { weatherBitAPI } from "./weatherbitapi";
 import { getCityImage } from "./getcityimage.js";
+import { getNewData } from "./getnewdata.js";
 import { uiUpdate } from "./uiupdate.js";
 
 export async function performAction(e) {
@@ -13,8 +14,11 @@ export async function performAction(e) {
       return weatherBitAPI();
     })
     .then(() => {
-      return getCityImage();
+      return getNewData()
     })
+    .then((data) => {
+      return getCityImage(data);
+    })    
     .then(() => {
       return uiUpdate();
     })
