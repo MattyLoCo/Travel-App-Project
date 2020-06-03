@@ -4,7 +4,6 @@ dotenv.config();
 
 //  Package to download image file to local project directory 'images'
 const fs = require("fs");
-const file = require("file-class");
 const request = require("request");
 
 const download = (url, path, callback) => {
@@ -132,4 +131,6 @@ app.post("/imageurlpost", (req, res) => {
   download(url, path, () => {
     console.log("Image download complete");
   });  
+
+  res.send(projectData.imageurl);
 });

@@ -57,6 +57,14 @@
     height: 25vh;
     width: 100%;
     padding: 5px; 
+
+    p {
+      color: $white;
+    }
+
+    p.title {
+      color: $yellow;
+    }
   }  
 
   .myInput {
@@ -123,7 +131,15 @@
 
     #entryHolder {
       height: 200px;
-    }
+
+      p {
+        color: $white;
+      }
+  
+      p.title {
+        color: $yellow;
+      }
+    }      
 
     label {
       height: 3em;
@@ -142,12 +158,13 @@
 @media (min-width: 901px) {
   body {    
     display: grid;
-    grid-template-rows: 150px 450px 250px 50px;
+    grid-template-rows: 150px 75vh 10vh;
     grid-template-columns: 30% 1fr 30% 30%;    
     grid-template-areas:
       "hd hd hd hd"
-      "field main main main"
+      "field field main main"      
       "ft ft ft ft";
+    grid-auto-flow: row;  
     position: relative;
       
     &::after {
@@ -164,7 +181,7 @@
       z-index: -1;
     }
     #app {
-      display: unset;
+      display: contents;
     }
 
     .headline {
@@ -173,14 +190,15 @@
       background-image: linear-gradient(to right, $white, #ffffed00);
 
       h1 {
-        font-size: 60px;
-        margin: 20px 20px;  
+        font-size: 5em;
+        margin: 30px 30px;  
       }
     }
-
-    .city,
-    .date {
+    
+    .main {
       grid-area: field;      
+      align-self: baseline;
+      margin-top: 30px;
 
       label {
         display: block;
@@ -215,24 +233,35 @@
     }      
     
     .entry {      
-      grid-area: ent;    
+      grid-area: main;    
       display: block;
+      margin-top: 30px;
       align-items: center;
       justify-content: center;
+      align-self: baseline;
       background: $gray;
       border-radius: 25px;
-      max-width: 100%;
+      max-width: 90%;
+      height: 80%;
       
 
       #entryHolder {
         height: 200px;
         width: unset;
-      }
+
+        p {
+          color: $white;
+        }
+    
+        p.title {
+          color: $yellow;
+        }
+      }  
+    }
 
       .title {
         font-size: 25px;
-      }
-    }
+      }    
     
     .footer {      
       grid-area: ft;

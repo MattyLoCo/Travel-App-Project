@@ -5,7 +5,7 @@ const weatherdiv = document.getElementById("temp");
 // const contentdiv = document.getElementById("content");
 // const enddiv = document.getElementById("end");
 
-export async function uiUpdate() {
+export async function uiUpdate(imagepath) {
   let response = await fetch("http://localhost:3000/all");
   console.log("uiUpdate function in progress");
   try {
@@ -14,7 +14,7 @@ export async function uiUpdate() {
     // Set background image from local storage
     document.getElementById(
       "citypic"
-    ).style.backgroundImage = `url('/images/${data.city}').png`;
+    ).style.backgroundImage = `url('./images/${imagepath}.png')`;
 
     // Create date block
     let dateheader = document.createElement("p");
@@ -40,9 +40,11 @@ export async function uiUpdate() {
     let weatherpara = document.createElement("p");
 
     // Determine weather report based on travel date
-    if (dateCountdown() === false) {
+    if (data.dates[2] == false) {
+      console.log("dateCountdown() is false");
       weatherpara.innerHTML = `The forecast for ${data.city} in two weeks is ${data.descrip} at ${data.temp}`;
     } else {
+      console.log("dateCountDown() is true");
       weatherpara.innerHTML = `The current forecast for ${data.city} is ${data.descrip} at ${data.temp}`;
     }
 

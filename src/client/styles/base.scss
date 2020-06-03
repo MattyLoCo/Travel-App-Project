@@ -65,9 +65,13 @@ body {
     opacity: 0.98;    
   }
 
-  #entryholder {
-    color: $white;
+  #entryholder {    
     font-size: 22px;
+
+    p {
+      color: $white;
+      text-align: center;
+    }
   }
 
   /* Reset style for HTML element on active to have no border*/

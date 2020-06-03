@@ -44,11 +44,13 @@ export async function getCityImage(data) {
             'url': stateimage.hits[0].webformatURL,
             'qstring': fullname,
           };
-          await localServerPost(
+          let statepostres = await localServerPost(
             "http://localhost:3000/imageurlpost",
             stateimageobject
           );
           console.log("stateimageobject sent to imageurlpost");
+          let statepostpath = await statepostres.json();      
+          return decodeURIComponent(statepostpath);    
       } catch (error) {
         console.log(error);
       }
@@ -66,11 +68,13 @@ export async function getCityImage(data) {
               'url': countryimage.hits[0].webformatURL,
               'qstring': country,
           };
-          await localServerPost(
+          let countrypostres = await localServerPost(
               "http://localhost:3000/imageurlpost",
               countryimageobject
           );
           console.log("countryimageobject sent to imageurlpost");
+          let countrypostpath = await countrypostres.json();
+          return decodeURIComponent(countrypostpath);
         } catch (error) {
         console.log(error);
         }
@@ -81,11 +85,16 @@ export async function getCityImage(data) {
         };
         console.log(`${typeof imageobject} ${imageobject}`);
 
-        await localServerPost(
+        let citypostres = await localServerPost(
           "http://localhost:3000/imageurlpost",
           imageobject
-        );        
-        console.log("imageobject sent to imageurlpost");
+        );
+        try {        
+        console.log("imageobject sent to imageurlpost");        
+        return decodeURIComponent(city);
+        } catch(error) {
+          console.log(error);
+        }
       } 
     } catch (error) {
     console.log(error);
