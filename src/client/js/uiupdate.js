@@ -7,8 +7,8 @@ const weatherdiv = document.getElementById("temp");
 // const enddiv = document.getElementById("end");
 
 export async function uiUpdate() {
-  let response = await getNewData();
-  
+  let response = await fetch('http://localhost:3000/all');
+
   try {
     let data = await response.json();
 

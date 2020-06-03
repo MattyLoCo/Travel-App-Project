@@ -5,6 +5,7 @@ const pixablykey = "16829835-98777d95523cd749144425052";
 let city;
 let country;
 let stateabbr;
+let imageinfo;
 
 export async function getCityImage(data) {
   console.log("getCityImage data " + data);
@@ -16,15 +17,13 @@ export async function getCityImage(data) {
   let result = encodeURIComponent(city);
   console.log("encodeURIComponent result", result);
 
-  let url = `https://pixabay.com/api/?key=${pixablykey}\
-  &q=${result}&image_type=photo&editors_choice=true&safesearch=true`;
+  let url = `https://pixabay.com/api/?key=${pixablykey}&q=${result}&image_type=photo`;
 
   // GET request from Pixabay
   let response = await fetch(url);
-  try {
-    let imageinfo = await response.json();
-
-    console.log("image api response", imageinfo);
+  try {    
+    imageinfo = await response.json();
+    console.log("image api response", imageinfo);        
 
     if (imageinfo.totalHits == 0) {
       if (country == "United States") {
@@ -34,12 +33,12 @@ export async function getCityImage(data) {
         let stateresult = encodeURIComponent(fullname);
         console.log(stateresult);
 
-        let stateurl = `https://pixabay.com/api/?key=${pixablykey}&\
-        q=${stateresult}&image_type=photo&editors_choice=true&safesearch=true`;
+        let stateurl = `https://pixabay.com/api/?key=${pixablykey}&q=${stateresult}&image_type=photo`;
 
         // GET request in the case that the city is in the US
-        let stateresponse = await fetch(stateurl);
+       
         try {
+          let stateresponse = await fetch(stateurl);
           let stateimage = await stateresponse.json();
           console.log(stateimage);
 
@@ -58,26 +57,27 @@ export async function getCityImage(data) {
       } else {
         let countryresult = encodeURIComponent(country);
         console.log(`encoded Country ${countryresult}`);
-        let countryurl = `https://pixabay.com/api/?key=${pixablykey}\
-        &q=${countryresult}&image_type=photo&editors_choice=true&safesearch=true`;
+        let countryurl = `https://pixabay.com/api/?key=${pixablykey}&q=${countryresult}&image_type=photo`;
 
-        let countryresponse = await fetch(countryurl);
-        try {
-          let countryimage = await countryresponse.json();
-          let countryimageobject = {
-            'url': countryimage.hits[0].webformatURL,
-            'qstring': country,
-          };
-          await localServerPost(
-            "http://localhost:3000/imageurlpost",
-            countryimageobject
-          );
-          console.log("countryimageobject sent to imageurlpost");
-        } catch (error) {
-          console.log(error);
-        }
+        // Get request if city has 0 hits and is NOT a US city
+        
+          try {
+            let countryresponse = await fetch(countryurl);
+            let countryimage = await countryresponse.json();
+            let countryimageobject = {
+              'url': countryimage.hits[0].webformatURL,
+              'qstring': country,
+            };
+            await localServerPost(
+              "http://localhost:3000/imageurlpost",
+              countryimageobject
+            );
+            console.log("countryimageobject sent to imageurlpost");
+          } catch (error) {
+            console.log(error);
+          }
       }
-      try {
+      try {        
         let imageobject = {
           'url': imageinfo.hits[0].webformatURL,
           'qstring': city,
@@ -87,7 +87,7 @@ export async function getCityImage(data) {
         await localServerPost(
           "http://localhost:3000/imageurlpost",
           imageobject
-        );
+        );        
         console.log("imageobject sent to imageurlpost");
       } catch (error) {
         console.log(error);

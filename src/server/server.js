@@ -128,15 +128,8 @@ app.post("/imageurlpost", (req, res) => {
   let url = req.body.url;
   let path = `./images/${req.body.qstring}.png`;
 
-  // See if the file exists
-  // let myImage = new file(path);
-
-  // if (myImage.exists()) {
-  //   write("The file exists");
-  // } else {
-    // Download Pixabay city image to local images folder
-    download(url, path, () => {
-      console.log("Image download complete");
-    });
-  // }
+  // Download Pixabay city image to local images folder
+  download(url, path, () => {
+    console.log("Image download complete");
+  });  
 });
