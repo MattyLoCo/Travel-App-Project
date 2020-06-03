@@ -6,11 +6,11 @@ const weatherdiv = document.getElementById("temp");
 // const enddiv = document.getElementById("end");
 
 export async function uiUpdate() {
-  let response = await fetch('http://localhost:3000/all');
-
+  let response = await fetch("http://localhost:3000/all");
+  console.log("uiUpdate function in progress");
   try {
     let data = await response.json();
-
+    console.log("uiUpdate " + data);
     // Set background image from local storage
     document.getElementById(
       "citypic"
