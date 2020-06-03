@@ -17,10 +17,10 @@ export async function performAction(e) {
       return getNewData()
     })
     .then((data) => {
-      return getCityImage(data);
+      getCityImage(data);
     })    
     .then(() => {
-      return uiUpdate();
+      uiUpdate();
     })
     .catch((error) => {
       console.log(error);

@@ -1,4 +1,3 @@
-import { getNewData } from "./getnewdata";
 import { dateCountdown } from "./countdown";
 
 const datediv = document.getElementById("date");
