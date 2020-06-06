@@ -42,6 +42,10 @@
       margin: 0px;
     }
   }
+  button {
+    display: inherit;
+    margin: 20px auto;
+  }  
 
   #app {
     height: auto;
@@ -148,8 +152,9 @@
     }
 
     button {
-      font-size: 20px;
-      margin: 35px auto 45px;
+      display: inherit;
+      font-size: 28px;
+      margin: 35px auto;
     }
   }
 }
@@ -206,6 +211,10 @@
         font-size: 30px;
         opacity: 0.9;
       }
+
+      div.date label {
+        margin-top: 30px;
+      }
   
       input {
         display: block;  
@@ -225,7 +234,7 @@
       // height: 50px;
       display: inherit;
       grid-area: field;
-      // margin: 15px;      
+      margin: 40px auto;
       font-size: 26px;
       border: none;
       border-radius: 25px;
@@ -241,7 +250,7 @@
       align-self: baseline;
       background: $gray;
       border-radius: 25px;
-      max-width: 90%;
+      max-width: 85%;
       height: 80%;
       
 
@@ -261,6 +270,7 @@
 
       .title {
         font-size: 25px;
+        margin-top: 20px;
       }    
     
     .footer {      

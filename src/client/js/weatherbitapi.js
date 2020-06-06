@@ -9,8 +9,8 @@ export async function weatherBitAPI() {
   try {
     let lat = data.latitude;
     let long = data.longitude;
-    const API_KEY = "ed272d7050954d248e5c7d3f9dd80768";
-    let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&units=I&key=${API_KEY}`;
+    const weatherkey = process.env.WEATHERBIT_API;
+    let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&units=I&key=${weatherkey}`;
 
     // Debug test
     console.log(`Latitude ${lat} longitude ${long}`);   

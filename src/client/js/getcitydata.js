@@ -1,17 +1,21 @@
 import { cityDataExtractor } from "./citydataextractor";
 import { localServerPost } from "./localserverpost";
 
-const baseURL = "http://api.geonames.org/searchJSON?name=";
-const username = "mattyloco";
-
 //  Function to retrieve API weather data
 export async function getCityData() {
   let city = document.getElementById("city").value;
-  let url = `${baseURL}${city}&maxRows=1&type=json&username=${username}`;
+  console.log(typeof city, city)
+  
+  let response = await fetch("http://localhost:3000/geonames", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(city)
+  });
 
-  const response = await fetch(url);
   try {
     let data = await response.json();
+    console.log(typeof data, data)
     let newData = cityDataExtractor(data);
     
     console.log("newData", newData);        
@@ -20,6 +24,6 @@ export async function getCityData() {
 
     return newData;
   } catch (error) {
-    console.log("Retrieval", error);
+    console.log("Retrieval ", error);
   }
 }
