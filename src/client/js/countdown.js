@@ -13,24 +13,22 @@ export async function dateCountdown() {
     console.log(travelDate);
     if (days == 0) {
       clearInterval(myfunc);      
-      document.getElementById("end").innerHTML = "Pack Your Bags!!";      
+      document.getElementById("end").innerHTML = "Pack Your Bags!!";
+      dates.push("true");      
+      await localServerPost("http://localhost:3000/traveldate", dates);
       return true;
     } else if (0 < days && days < 7) {
-      await localServerPost("http://localhost:3000/traveldate", dates);
       dates.push("true");
-      console.log(dates);
+      await localServerPost("http://localhost:3000/traveldate", dates);            
       return true;
     } else {
-      await localServerPost("http://localhost:3000/traveldate", dates);
-      dates.push(false);
-      console.log(dates);
+      dates.push("false");
+      await localServerPost("http://localhost:3000/traveldate", dates);            
       return false;
     }
   } else {
     console.log("User did not enter a valid date in form YYYY-MM-DD");
-
     let clearDates = "";
-    localServerPost("http://localhost:3000/traveldate", clearDates);
-    return false;
+    localServerPost("http://localhost:3000/traveldate", clearDates);    
   }
 }

@@ -1,5 +1,3 @@
-import { dateCountdown } from "./countdown";
-
 const datediv = document.getElementById("date");
 const weatherdiv = document.getElementById("temp");
 // const contentdiv = document.getElementById("content");

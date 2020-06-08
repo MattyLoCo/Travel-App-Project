@@ -1,12 +1,11 @@
 import { localServerPost } from "./localserverpost";
-import { dateCountdown } from "./countdown";
 import { getCountryName } from "./ISOconvert";
 
 export async function weatherBitAPI() {
   let data = await fetch('http://localhost:3000/weatherbit');
     try {
       let fetchData = await data.json();
-      console.log("fetchData", fetchData);
+      console.log("fetchData", fetchData);      
 
       let country = getCountryName(fetchData.country_code);
       let futureWeatherData = {
@@ -22,10 +21,10 @@ export async function weatherBitAPI() {
         'descrip': fetchData.data[0].weather.description
       };
 
-      let dateCountdownResult = await dateCountdown();
-      console.log("dateCountdownResult", dateCountdownResult);
+      // let dateCountdownResult = await dateCountdown();
+      // console.log("dateCountdownResult", dateCountdownResult);
 
-      if (dateCountdownResult === false) {
+      if (fetchData.dates[2] == false) {
         console.log(typeof fetchData + fetchData + ' has reached the beginning of localserverpost "forecastpost"');  
         await localServerPost("http://localhost:3000/forecastpost", futureWeatherData);
       } else {

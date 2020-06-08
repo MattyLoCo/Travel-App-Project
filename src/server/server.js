@@ -7,9 +7,7 @@ const request = require("request");
 
 const download = (url, path, callback) => {
   request.head(url, (err, res, body) => {
-    request(url)
-      .pipe(fs.createWriteStream(path))
-      .on("close", callback)
+    request(url).pipe(fs.createWriteStream(path)).on("close", callback);
   });
 };
 
@@ -32,7 +30,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const URL = require('url').URL;
+const URL = require("url").URL;
 
 /* Middleware*/
 // app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,16 +39,13 @@ app.use(cors());
 app.use(express.static("dist"));
 
 // Preflight Options
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Request-Headers', 'Origin, Content-Type');
-//   res.header('Access-Control-Allow-Credentials', 'true');
-//   next();
-// })
-app.options("/*", function(req, res, next){
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+app.options("/*", function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, Content-Length, X-Requested-With"
+  );
   res.send(200);
 });
 
@@ -67,43 +62,81 @@ app.get("/all", (request, response) => {
   response.send(projectData);
 });
 
-app.get("/weatherbit", (req, res) => {  
-  // let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&units=I&key=${weatherkey}`;    
-  let newurl = new URL('https://api.weatherbit.io/v2.0/forecast/daily?lat=' + projectData.latitude + '&lon=' +
-    projectData.longitude + '&units=I&key=' + process.env.WEATHERBIT_API);
-    console.log(newurl);
+app.get("/weatherbit", (req, res) => {
+  let newurl = new URL(
+    "https://api.weatherbit.io/v2.0/forecast/daily?lat=" +
+      projectData.latitude +
+      "&lon=" +
+      projectData.longitude +
+      "&units=I&key=" +
+      process.env.WEATHERBIT_API
+  );
+  console.log(newurl);
 
-  request(
-    { url: newurl },
-    (error, response, body) => {  
-      if (error || response.statusCode !== 200) {        
-        return res.status(500).json({ type: 'error', message: error });        
-      } 
-    
-      res.json(JSON.parse(body));
+  request({ url: newurl }, (error, response, body) => {
+    if (error || response.statusCode !== 200) {
+      return res.status(500).json({ type: "error", message: error });
     }
-  )       
+
+    res.json(JSON.parse(body));
+  });
 });
 
+app.get("/pixabay", (req, res) => {
+  let result = encodeURIComponent(projectData.city);
+  let newurl = new URL(
+    "https://pixabay.com/api/?key=" +
+      process.env.PIXABAY_API +
+      "&q=" +
+      result +
+      "&image_type=photo"
+  );
+  console.log(newurl);
+
+  request({ url: newurl }, (error, response, body) => {
+    if (error || response.statusCode !== 200) {
+      return res.status(500).json({ type: "error", message: error });
+    }
+    res.json(JSON.parse(body));
+  });
+});
+
+app.get("/pixabaycountry", (req, res) => {
+  let countryresult = encodeURIComponent(projectData.country);
+  let newurl = new URL(
+    "https://pixabay.com/api/?key=" +
+      process.env.PIXABAY_API +
+      "&q=" +
+      countryresult +
+      "&image_type=photo"
+  );
+  console.log(newurl);
+
+  request({ url: newurl }, (error, response, body) => {
+    if (error || response.statusCode !== 200) {
+      return res.status(500).json({ type: "error", message: error });
+    }
+    res.json(JSON.parse(body));
+  });
+});
 
 //  POST
-app.post("/geonames", (req, res) => {    
+app.post("/geonames", (req, res) => {
   let city = req.body.a;
   console.log(city);
   let baseURL = `http://api.geonames.org/searchJSON?name=`;
-  let newurl = new URL(baseURL + city + '&maxRows=1&type=json&username=' + process.env.USER_NAME);  
+  let newurl = new URL(
+    baseURL + city + "&maxRows=1&type=json&username=" + process.env.USER_NAME
+  );
 
-  request(
-    { url: newurl },
-    (error, response, body) => {  
-      if (error || response.statusCode !== 200) {        
-        return res.status(500).json({ type: 'error', message: error });        
-      } 
-    
-      res.json(JSON.parse(body));
+  request({ url: newurl }, (error, response, body) => {
+    if (error || response.statusCode !== 200) {
+      return res.status(500).json({ type: "error", message: error });
     }
-  )       
-});  
+
+    res.json(JSON.parse(body));
+  });
+});
 
 app.post("/addcity", (req, res) => {
   //  Debug code console test
@@ -151,7 +184,7 @@ app.post("/forecastpost", (req, res) => {
   console.log(
     `${typeof req.body} has reached server 'forecastpost' post function`
   );
-  
+
   if (req.body.country == "United States") {
     projectData.statecode = req.body.statecode;
   } else {
@@ -163,6 +196,25 @@ app.post("/forecastpost", (req, res) => {
   projectData.descrip = req.body.descrip;
 
   res.send(projectData);
+});
+
+app.post("/pixabaystate", (req, res) => {
+  let stateresult = encodeURIComponent(req.body.a);
+  let newurl = new URL(
+    "https://pixabay.com/api/?key=" +
+      process.env.PIXABAY_API +
+      "&q=" +
+      stateresult +
+      "&image_type=photo"
+  );
+  console.log(newurl);
+
+  request({ url: newurl }, (error, response, body) => {
+    if (error || response.statusCode !== 200) {
+      return res.status(500).json({ type: "error", message: error });
+    }
+    res.json(JSON.parse(body));
+  });
 });
 
 app.post("/imageurlpost", (req, res) => {
@@ -178,7 +230,7 @@ app.post("/imageurlpost", (req, res) => {
   // Download Pixabay city image to local images folder
   download(url, path, () => {
     console.log("Image download complete");
-  });  
+  });
 
   res.send(projectData.imageurl);
 });
