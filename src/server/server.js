@@ -67,24 +67,45 @@ app.get("/all", (request, response) => {
   response.send(projectData);
 });
 
-//  POST
-app.post("/geonames", (req, res) => {    
-  let city = JSON.stringify(req.body)
-  let baseURL = `http://api.geonames.org/searchJSON?name=`;
-  let newurl = new URL(`${city}&maxRows=1&type=json&username=${process.env.USER_NAME}`, baseURL);  
+app.get("/weatherbit", (req, res) => {  
+  // let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&units=I&key=${weatherkey}`;
+  let long = req.body.longitude;
+  let lat = req.body.latitude;
+  console.log(long, lat);
+  let newurl = new URL('https://api.weatherbit.io/v2.0/forecast/daily?lat=' + projectData.latitude + '&lon=' +
+    projectData.longitude + '&units=I&key=' + process.env.WEATHERBIT_API);
 
   request(
     { url: newurl },
     (error, response, body) => {  
-      if (error || response.statusCode !== 200) {
-        return res.status(500).json({ type: 'error', message: err.message });
-      }
+      if (error || response.statusCode !== 200) {        
+        return res.status(500).json({ type: 'error', message: error });        
+      } 
+    
+      res.json(JSON.parse(body));
+    }
+  )       
+});
+
+
+//  POST
+app.post("/geonames", (req, res) => {    
+  let city = req.body.a;
+  console.log(city);
+  let baseURL = `http://api.geonames.org/searchJSON?name=`;
+  let newurl = new URL(baseURL + city + '&maxRows=1&type=json&username=' + process.env.USER_NAME);  
+
+  request(
+    { url: newurl },
+    (error, response, body) => {  
+      if (error || response.statusCode !== 200) {        
+        return res.status(500).json({ type: 'error', message: error });        
+      } 
     
       res.json(JSON.parse(body));
     }
   )       
 });  
-
 
 app.post("/addcity", (req, res) => {
   //  Debug code console test

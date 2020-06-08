@@ -3,14 +3,16 @@ import { localServerPost } from "./localserverpost";
 
 //  Function to retrieve API weather data
 export async function getCityData() {
-  let city = document.getElementById("city").value;
-  console.log(typeof city, city)
+  let city = document.getElementById("city").value;  
+  let cityVal = {
+    a: city
+  };
   
   let response = await fetch("http://localhost:3000/geonames", {
     method: "POST",
     credentials: "same-origin",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(city)
+    body: JSON.stringify(cityVal)
   });
 
   try {

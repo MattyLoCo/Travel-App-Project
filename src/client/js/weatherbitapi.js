@@ -1,22 +1,12 @@
 import { localServerPost } from "./localserverpost";
-import { getNewData } from "./getnewdata.js";
-import { weatherFetch } from "./weatherfetch.js";
 import { dateCountdown } from "./countdown";
 import { getCountryName } from "./ISOconvert";
 
 export async function weatherBitAPI() {
-  let data = await getNewData();
-  try {
-    let lat = data.latitude;
-    let long = data.longitude;
-    const weatherkey = process.env.WEATHERBIT_API;
-    let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&units=I&key=${weatherkey}`;
-
-    // Debug test
-    console.log(`Latitude ${lat} longitude ${long}`);   
-
+  try {    
+    
     try {
-      let fetchData = await weatherFetch(url);
+      let fetchData = await fetch('http://localhost:3000/weatherbit');
       console.log("fetchData", fetchData);
 
       let country = getCountryName(fetchData.country_code);
