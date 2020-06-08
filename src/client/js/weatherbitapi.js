@@ -3,10 +3,9 @@ import { dateCountdown } from "./countdown";
 import { getCountryName } from "./ISOconvert";
 
 export async function weatherBitAPI() {
-  try {    
-    
+  let data = await fetch('http://localhost:3000/weatherbit');
     try {
-      let fetchData = await fetch('http://localhost:3000/weatherbit');
+      let fetchData = await data.json();
       console.log("fetchData", fetchData);
 
       let country = getCountryName(fetchData.country_code);
@@ -36,7 +35,5 @@ export async function weatherBitAPI() {
     } catch (error) {
       console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
-}
+  } 
+

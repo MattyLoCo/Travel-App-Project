@@ -11,7 +11,6 @@ import { localServerPost } from "./js/localserverpost";
 import { getFullStateName } from "./js/statecodeconverter";
 import { stringToNumber } from "./js/stringtonumconverter";
 import { weatherBitAPI } from "./js/weatherbitapi";
-import { weatherFetch } from "./js/weatherfetch";
 import "./styles/style.scss";
 
 export {
@@ -27,8 +26,7 @@ export {
   localServerPost,
   getFullStateName,
   stringToNumber,
-  weatherBitAPI,
-  weatherFetch
+  weatherBitAPI  
 };
 
 // Add event listener

@@ -68,12 +68,10 @@ app.get("/all", (request, response) => {
 });
 
 app.get("/weatherbit", (req, res) => {  
-  // let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&units=I&key=${weatherkey}`;
-  let long = req.body.longitude;
-  let lat = req.body.latitude;
-  console.log(long, lat);
+  // let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${long}&units=I&key=${weatherkey}`;    
   let newurl = new URL('https://api.weatherbit.io/v2.0/forecast/daily?lat=' + projectData.latitude + '&lon=' +
     projectData.longitude + '&units=I&key=' + process.env.WEATHERBIT_API);
+    console.log(newurl);
 
   request(
     { url: newurl },
@@ -154,14 +152,13 @@ app.post("/forecastpost", (req, res) => {
     `${typeof req.body} has reached server 'forecastpost' post function`
   );
   
-  let country = req.body.country;
-  if (country == "United States") {
+  if (req.body.country == "United States") {
     projectData.statecode = req.body.statecode;
   } else {
     projectData.statecode = "";
   }
 
-  projectData.country = country;
+  projectData.country = req.body.country;
   projectData.temp = req.body.temp;
   projectData.descrip = req.body.descrip;
 
