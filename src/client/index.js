@@ -26,7 +26,7 @@ export {
   localServerPost,
   getFullStateName,
   stringToNumber,
-  weatherBitAPI  
+  weatherBitAPI,
 };
 
 // Add event listener

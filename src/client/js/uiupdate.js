@@ -20,7 +20,7 @@ export async function uiUpdate(imagepath) {
 
     let datepara = document.createElement("p");
     let dateparatext = document.createTextNode(
-      `${data.dates[1]} days remaining until you leave on ${data.dates[0]}`
+      `${data.dates[1]} day(s) remaining until you leave on ${data.dates[0]}`
     );
     datepara.appendChild(dateparatext);
     datediv.appendChild(datepara);

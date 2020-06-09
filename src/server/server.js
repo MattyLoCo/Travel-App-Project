@@ -139,10 +139,6 @@ app.post("/geonames", (req, res) => {
 });
 
 app.post("/addcity", (req, res) => {
-  //  Debug code console test
-  for (let [key, value] of Object.entries(req.body)) {
-    console.log(`${key}: ${value}`);
-  }
   console.log(`${typeof req.body} has reached server 'addcity' post function`);
 
   projectData.city = req.body.city;
@@ -173,7 +169,7 @@ app.post("/weatherpost", (req, res) => {
     projectData.statecode = "";
   }
 
-  projectData.country = country;
+  projectData.country = req.body.country;
   projectData.temp = req.body.temp;
   projectData.descrip = req.body.descrip;
 
@@ -207,7 +203,6 @@ app.post("/pixabaystate", (req, res) => {
       stateresult +
       "&image_type=photo"
   );
-  console.log(newurl);
 
   request({ url: newurl }, (error, response, body) => {
     if (error || response.statusCode !== 200) {
@@ -232,5 +227,4 @@ app.post("/imageurlpost", (req, res) => {
     console.log("Image download complete");
     res.send(projectData.imageurl);
   });
-  
 });
