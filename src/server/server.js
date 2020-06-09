@@ -230,7 +230,7 @@ app.post("/imageurlpost", (req, res) => {
   // Download Pixabay city image to local images folder
   download(url, path, () => {
     console.log("Image download complete");
+    res.send(projectData.imageurl);
   });
-
-  res.send(projectData.imageurl);
+  
 });
