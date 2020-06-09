@@ -1,7 +1,5 @@
 const datediv = document.getElementById("date");
 const weatherdiv = document.getElementById("temp");
-// const contentdiv = document.getElementById("content");
-// const enddiv = document.getElementById("end");
 
 export async function uiUpdate(imagepath) {
   let response = await fetch("http://localhost:3000/all");
@@ -9,10 +7,9 @@ export async function uiUpdate(imagepath) {
   try {
     let data = await response.json();
     console.log("uiUpdate " + data);
+
     // Set background image from local storage
-    document.getElementById(
-      "citypic"
-    ).style.backgroundImage = `url('./images/${imagepath}.png')`;
+    document.getElementById("citypic").style.backgroundImage = `url('./images/${imagepath}.png')`;
 
     // Create date block
     let dateheader = document.createElement("p");
@@ -38,15 +35,18 @@ export async function uiUpdate(imagepath) {
     let weatherpara = document.createElement("p");
 
     // Determine weather report based on travel date
-    if (data.dates[2] == false) {
-      console.log("dateCountdown() is false");
-      weatherpara.innerHTML = `The forecast for ${data.city} in two weeks is ${data.descrip} at ${data.temp}`;
+    if (data.dates[2] == "false") {
+      console.log("Dates[2] is false");
+      weatherpara.innerHTML = `The forecast for ${data.city} in two weeks \
+        is ${data.descrip} at ${data.temp}&deg; Fahrenheit`;
+      weatherdiv.appendChild(weatherpara);
     } else {
-      console.log("dateCountDown() is true");
-      weatherpara.innerHTML = `The current forecast for ${data.city} is ${data.descrip} at ${data.temp}`;
+      console.log("Dates[2] is true");
+      weatherpara.innerHTML = `The current forecast for ${data.city} is \
+        ${data.descrip} at ${data.temp}&deg; Fahrenheit`;
+      weatherdiv.appendChild(weatherpara);
     }
-
-    weatherdiv.appendChild(weatherpara);
+    
   } catch (error) {
     console.log(error);
   }

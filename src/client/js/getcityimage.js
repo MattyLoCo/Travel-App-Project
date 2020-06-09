@@ -21,8 +21,6 @@ export async function getCityImage(data) {
       console.log(fullname);
 
       let stateresult = { a: fullname };
-      // let stateresult = encodeURIComponent(fullname);
-      // console.log(stateresult);
 
       // In the case that the city is in the US
       try {

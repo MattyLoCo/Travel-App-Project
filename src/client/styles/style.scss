@@ -45,7 +45,7 @@
   button {
     display: inherit;
     margin: 20px auto;
-  }  
+  }
 
   #app {
     height: auto;
@@ -60,16 +60,17 @@
   #entryHolder {
     height: 25vh;
     width: 100%;
-    padding: 5px; 
+    padding: 5px;
 
     p {
       color: $white;
+      text-align: center;
     }
 
     p.title {
       color: $yellow;
     }
-  }  
+  }
 
   .myInput {
     height: 3em;
@@ -79,7 +80,6 @@
 // Tablet devices
 @media (min-width: 601px) and (max-width: 900px) {
   body {
-    
     display: flex;
     flex-direction: column;
     position: relative;
@@ -110,14 +110,13 @@
 
     .headline {
       background-color: unset;
-      background: linear-gradient(to right, $white, #ffffed00);   
+      background: linear-gradient(to right, $white, #ffffed00);
       height: 6em;
-      align-items: flex-start;           
-      
+      align-items: flex-start;
 
       h1 {
         font-size: 55px;
-        margin: 0px 0px 0px 20px;        
+        margin: 0px 0px 0px 20px;
       }
     }
 
@@ -138,12 +137,13 @@
 
       p {
         color: $white;
+        text-align: center;
       }
-  
+
       p.title {
         color: $yellow;
       }
-    }      
+    }
 
     label {
       height: 3em;
@@ -161,17 +161,17 @@
 
 //  Desktop devices
 @media (min-width: 901px) {
-  body {    
+  body {
     display: grid;
     grid-template-rows: 150px 75vh 10vh;
-    grid-template-columns: 30% 1fr 30% 30%;    
+    grid-template-columns: 30% 1fr 30% 30%;
     grid-template-areas:
       "hd hd hd hd"
-      "field field main main"      
+      "field field main main"
       "ft ft ft ft";
-    grid-auto-flow: row;  
+    grid-auto-flow: row;
     position: relative;
-      
+
     &::after {
       content: "";
       background: url(/images/desktop-background.jpg);
@@ -196,12 +196,12 @@
 
       h1 {
         font-size: 5em;
-        margin: 30px 30px;  
+        margin: 30px 30px;
       }
     }
-    
+
     .main {
-      grid-area: field;      
+      grid-area: field;
       align-self: baseline;
       margin-top: 30px;
 
@@ -215,18 +215,18 @@
       div.date label {
         margin-top: 30px;
       }
-  
+
       input {
-        display: block;  
-        width: 300px;      
+        display: block;
+        width: 300px;
         font-size: 25px;
         border: none;
 
         &[type="text" i] {
           padding: 1px 10px;
-        }  
+        }
       }
-    }  
+    }
     /*  Basic Styling To Override Default For Basic HTML Elements */
 
     button {
@@ -239,10 +239,10 @@
       border: none;
       border-radius: 25px;
       box-shadow: 2px 4px 5px #444;
-    }      
-    
-    .entry {      
-      grid-area: main;    
+    }
+
+    .entry {
+      grid-area: main;
       display: block;
       margin-top: 30px;
       align-items: center;
@@ -252,29 +252,31 @@
       border-radius: 25px;
       max-width: 85%;
       height: 80%;
-      
 
       #entryHolder {
         height: 200px;
         width: unset;
+        overflow: inherit;
 
         p {
           color: $white;
+          margin: 20px;
+          text-align: center;
         }
-    
+
         p.title {
           color: $yellow;
         }
-      }  
+      }
     }
 
-      .title {
-        font-size: 25px;
-        margin-top: 20px;
-      }    
-    
-    .footer {      
+    .title {
+      font-size: 25px;
+      margin-top: 20px;
+    }
+
+    .footer {
       grid-area: ft;
-    } 
-  }   
+    }
+  }
 }

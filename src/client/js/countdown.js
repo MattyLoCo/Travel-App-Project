@@ -9,20 +9,22 @@ export async function dateCountdown() {
   let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
   let dates = [travelDate, days];
 
-  if (validateDateForm() === true) {
-    console.log(travelDate);
+  if (validateDateForm() === true) {    
     if (days == 0) {
       clearInterval(myfunc);      
       document.getElementById("end").innerHTML = "Pack Your Bags!!";
       dates.push("true");      
+      console.log(dates);
       await localServerPost("http://localhost:3000/traveldate", dates);
       return true;
     } else if (0 < days && days < 7) {
       dates.push("true");
+      console.log(dates);
       await localServerPost("http://localhost:3000/traveldate", dates);            
       return true;
     } else {
       dates.push("false");
+      console.log(dates);
       await localServerPost("http://localhost:3000/traveldate", dates);            
       return false;
     }

@@ -5,9 +5,9 @@ export async function getNewData() {
     let projectData = await response.json();
 
     //  Debug test
-    for (let [key, value] of Object.entries(projectData)) {
-      console.log(`${key}: ${value}`);
-    }
+    // for (let [key, value] of Object.entries(projectData)) {
+    //   console.log(`${key}: ${value}`);
+    // }
 
     return projectData;
   } catch (error) {

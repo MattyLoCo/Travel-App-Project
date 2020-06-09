@@ -11,7 +11,10 @@ export async function performAction(e) {
       return dateCountdown();
     })
     .then(() => {
-      return weatherBitAPI();
+      return getNewData();
+    })
+    .then((data) => {
+      return weatherBitAPI(data);
     })
     .then(() => {
       return getNewData()
