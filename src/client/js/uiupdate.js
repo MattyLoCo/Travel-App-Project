@@ -8,7 +8,7 @@ export async function uiUpdate(imagepath) {
         // Set background image from local storage
         document.getElementById(
             'citypic'
-        ).style.backgroundImage = `url('./images/${imagepath}.png')`;
+        ).style.backgroundImage = `url('${imagepath}')`;
 
         // Create date block
         document.getElementById('date').innerHTML = 'Travel Date Info';

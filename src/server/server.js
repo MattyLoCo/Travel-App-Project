@@ -49,11 +49,9 @@ app.options("/*", function (req, res, next) {
   res.send(200);
 });
 
-//  Setup Server
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  return console.log(`Express server listening on port ${port}...`);
-});
+//  Export server to allow for multiple servers for testing
+module.exports = app;
+
 
 /* Routes */
 //  GET
@@ -118,6 +116,10 @@ app.get("/pixabaycountry", (req, res) => {
     }
     res.json(JSON.parse(body));
   });
+});
+
+app.get('/test', async (req, res) => {
+  res.json({message: 'pass!'})
 });
 
 //  POST
@@ -219,12 +221,5 @@ app.post("/imageurlpost", (req, res) => {
 
   projectData.imageurl = req.body;
 
-  let url = req.body.url;
-  let path = `./images/${req.body.qstring}.png`;
-
-  // Download Pixabay city image to local images folder
-  download(url, path, () => {
-    console.log("Image download complete");
-    res.send(projectData.imageurl);
-  });
+  res.send(projectData.imageurl);
 });

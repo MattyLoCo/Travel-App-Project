@@ -30,6 +30,11 @@
       position: absolute;
       z-index: -1;
     }
+
+    input:hover {
+      box-shadow: 5px 10px 8px $gray;
+      border: none;
+    }
   }
 
   .headline {
@@ -42,9 +47,15 @@
       margin: 0px;
     }
   }
+  
   button {
     display: inherit;
     margin: 20px auto;
+
+    &:hover {
+      box-shadow: 5px 10px 8px $gray;
+      border: none;
+    }
   }
 
   #app {
@@ -77,6 +88,7 @@
   }
 }
 
+
 // Tablet devices
 @media (min-width: 601px) and (max-width: 900px) {
   body {
@@ -105,6 +117,11 @@
 
       &[type="text" i] {
         padding: 1px 10px;
+      }
+
+      &:hover {
+        box-shadow: 5px 10px 8px $gray;
+        border: none;
       }
     }
 
@@ -155,7 +172,20 @@
       display: inherit;
       font-size: 28px;
       margin: 35px auto;
+
+      &:hover {
+        box-shadow: 5px 10px 8px $gray;
+        border: none;
+      }
     }
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:hover {
+    box-shadow: 10px;
+    border: none;
   }
 }
 
@@ -225,13 +255,16 @@
         &[type="text" i] {
           padding: 1px 10px;
         }
+
+        &:hover {
+          box-shadow: 5px 10px 8px $gray;
+          border: none;
+        }
       }
     }
     /*  Basic Styling To Override Default For Basic HTML Elements */
 
-    button {
-      // width: 200px;
-      // height: 50px;
+    button {      
       display: inherit;
       grid-area: field;
       margin: 40px auto;
@@ -239,6 +272,11 @@
       border: none;
       border-radius: 25px;
       box-shadow: 2px 4px 5px #444;
+
+      &:hover {
+        box-shadow: 5px 10px 8px $gray;
+        border: none;
+      }
     }
 
     .entry {
@@ -254,9 +292,9 @@
       height: 80%;
 
       #entryHolder {
-        height: 200px;
+        height: 90%;
         width: unset;
-        overflow: inherit;
+        overflow: scroll;
 
         p {
           color: $white;
@@ -267,12 +305,25 @@
         p.title {
           color: $yellow;
         }
+
+        #citypic {
+          height: 60%;
+        }
       }
     }
 
     .title {
       font-size: 25px;
       margin-top: 20px;
+    }
+
+
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:hover {
+      box-shadow: 10px;
+      border: none;
     }
 
     .footer {

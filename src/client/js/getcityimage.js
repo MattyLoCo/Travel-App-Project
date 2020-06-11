@@ -41,7 +41,7 @@ export async function getCityImage(data) {
                 );
                 console.log('stateimageobject sent to imageurlpost');
                 let statepostpath = await statepostres.json();
-                return decodeURIComponent(statepostpath);
+                return stateimageobject.url;
             } catch (error) {
                 console.log(error);
             }
@@ -64,7 +64,7 @@ export async function getCityImage(data) {
                 );
                 console.log('countryimageobject sent to imageurlpost');
                 let countrypostpath = await countrypostres.json();
-                return decodeURIComponent(countrypostpath);
+                return countryimageobject.url;
             } catch (error) {
                 console.log(error);
             }
@@ -81,7 +81,7 @@ export async function getCityImage(data) {
                     imageobject
                 );
                 console.log('imageobject sent to imageurlpost');
-                return decodeURIComponent(city);
+                return imageobject.url;
             } catch (error) {
                 console.log(error);
             }
